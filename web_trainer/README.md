@@ -1,10 +1,10 @@
+
 # Chess Trainer Web App
 
-This React-based web a## Data Source
+An interactive React-based chess training platform that helps you improve by practicing positions from your own Chess.com games. Powered by spaced repetition, persistent statistics, and error-focused training.
 
-The training positions come from your Chess.com game analysis, processed by the `analyze_chess_games.py` script. Each position includes:ication allows you to train on positions from your Chess.com game analysis.
 
-## Setup
+## Quick Start
 
 1. **Install dependencies:**
    ```bash
@@ -12,7 +12,7 @@ The training positions come from your Chess.com game analysis, processed by the 
    npm install
    ```
 
-2. **Load training data:**
+2. **Load your training data:**
    ```bash
    # From the root directory (chesscoach/)
    python update_trainer_data.py blitz
@@ -29,46 +29,57 @@ The training positions come from your Chess.com game analysis, processed by the 
    ```
 
 4. **Open your browser:**
-   Navigate to `http://localhost:3000`
+   Go to [http://localhost:3000](http://localhost:3000)
 
-## Features
 
-- **Interactive chessboard:** Drag and drop pieces to make moves
-- **Position training:** Practice finding the best moves from your actual games
-- **Progress tracking:** See how many problems you've solved
-- **Error categorization:** Focus on specific types of mistakes (Blunder, Mistake, Inaccuracy)
-- **Evaluation display:** See how your moves affected the position evaluation
+## Key Features
+
+- **Spaced Repetition Training:** Practice positions using a proven memory technique (like Anki) for maximum retention.
+- **Persistent Progress Tracking:** All your attempts, mastery, and stats are stored in a database—never lose your progress.
+- **Error-Focused Practice:** Filter and train on Blunders, Mistakes, or all errors to target your weaknesses.
+- **Interactive Chessboard:** Drag and drop pieces to make moves, with instant feedback.
+- **Detailed Feedback:** See your move, the best move, and how it changed the evaluation.
+- **Session Stats:** Track your accuracy, auto-reveals, and review queue in real time.
+- **Game Context:** Each position shows move number, color, error type, game date, and player name.
+
 
 ## How to Use
 
-1. **Study the position:** Look at the board and try to find the best move
-2. **Make your move:** Drag a piece to make your move on the board
-3. **Get feedback:** The app will tell you if you found the best move
-4. **Navigate:** Use Previous/Next buttons to move between problems
-5. **Track progress:** Monitor your solving percentage and attempts
+1. **Study the position:** Review the board, move number, error type, and game context.
+2. **Make your move:** Drag a piece to play your answer.
+3. **Get instant feedback:** See if your move matches the engine's best move and how it affects the evaluation.
+4. **Auto-reveal:** After 3 failed attempts, the solution is shown automatically.
+5. **Filter training:** Use the filter bar to focus on Blunders, Mistakes, or all errors.
+6. **Track your progress:** Session stats and mastery are updated and stored automatically.
 
-## Data Sources
 
-The training positions come from your Chess.com game analysis, processed by the `analyze_chess_games.py` script. Each position includes:
+## Data Source
 
-- The board state (FEN)
-- Your actual move vs. the best move
-- Evaluation before and after the move
-- Error classification (Blunder, Mistake, Inaccuracy)
-- Game context (move number, color to play)
+Training positions are generated from your Chess.com games using the `analyze_chess_games.py` script. Each position includes:
 
-## Tips
+- Board state (FEN)
+- Your move and the engine's best move
+- Evaluation before and after your move
+- Error type (Blunder, Mistake, Inaccuracy)
+- Game context: move number, color, date played, player name
 
-- **Focus on pattern recognition:** Look for common tactical and positional themes
-- **Review mistakes:** Pay attention to why the suggested move is better
-- **Practice regularly:** Regular training helps improve pattern recognition
-- **Analyze evaluations:** Understand how moves affect position evaluation
+
+## Tips for Effective Training
+
+- **Focus on patterns:** Look for recurring tactical and positional motifs.
+- **Review your mistakes:** Understand why the best move is superior.
+- **Practice regularly:** Consistency is key to improvement.
+- **Use filters:** Target your weakest areas by training only blunders or mistakes.
+
 
 ## Troubleshooting
 
-- **No positions loading:** Make sure `analysis_results.json` exists in the `public/` folder
-- **Board not displaying:** Ensure all npm dependencies are installed
-- **Data not updating:** Re-run the `update_trainer_data.py` script
+- **No positions loading:** Ensure `analysis_results.json` exists in the `public/` folder.
+- **Board not displaying:** Make sure all npm dependencies are installed.
+- **Data not updating:** Re-run the `update_trainer_data.py` script after analyzing new games.
+- **Stats not saving:** Confirm the backend server is running and accessible.
+
+r2qkb1r/pp3p1p/2n2p2/3ppb2/3P4/2N2N2/PPP1BPPP/R2Q1RK1 w kq - 0 10
 
 ## File Structure
 
@@ -79,129 +90,19 @@ web_trainer/
 │   └── index.html
 ├── src/
 │   ├── components/
-│   │   └── ChessboardTrainer.js # Main training component
-│   ├── App.js                   # Main app component
+│   │   ├── SpacedRepetitionTrainer.js # Main spaced repetition component
+│   │   └── ChessboardTrainer.js      # Chessboard UI
+│   ├── utils/
+│   │   └── ChessTrainingAPI.js       # API for backend stats
+│   ├── App.js                        # Main app component
 │   └── index.js
 └── package.json
 ```
-  - Flip board orientation
-  - Reset to starting position
-  - Load example positions
-- **Real-time FEN Display**: See the current position in FEN format
-- **Mobile Responsive**: Works on desktop and mobile devices
-
-## Example FEN Position
-
-The application comes with a pre-loaded example position:
-```
-r2qkb1r/pp3p1p/2n2p2/3ppb2/3P4/2N2N2/PPP1BPPP/R2Q1RK1 w kq - 0 10
-```
-
-## Installation
-
-1. Clone or download the project:
-```bash
-git clone <repository-url>
-cd chessboard
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the server:
-```bash
-npm start
-```
-
-4. Open your browser and navigate to:
-```
-http://localhost:3000
-```
-
-## Usage
-
-### Loading Positions
-- Enter any valid FEN string in the input field and press Enter
-- Use the "Load Example FEN" button to see a sample position
-- Click "Reset Board" to return to the starting position
-
-### Interacting with the Board
-- Drag and drop pieces to move them
-- Click "Flip Board" to change the board orientation
-- The current position FEN is displayed at the bottom
-
-### FEN Format
-FEN (Forsyth-Edwards Notation) describes a chess position. Format:
-```
-[piece placement] [active color] [castling rights] [en passant] [halfmove] [fullmove]
-```
-
-Example: `rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1`
-
-## Project Structure
-
-```
-chessboard/
-├── server.js              # Express server
-├── package.json           # Node.js dependencies
-├── public/
-│   ├── index.html         # Main HTML page
-│   └── app.js            # Client-side JavaScript
-├── .github/
-│   └── copilot-instructions.md
-└── README.md
-```
-
-## Dependencies
-
-- **Express**: Web server framework
-- **Chessground**: Lichess chess board component
-- **Node.js**: Runtime environment
-
-## Development
-
-The application uses:
-- Modern ES6+ JavaScript
-- CSS Grid and Flexbox for responsive layout
-- Chessground library for chess board functionality
-- Express.js for serving static files
-
-## Browser Support
-
-- Chrome/Chromium (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
 
 ## License
 
-
-ISC License
+MIT License
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## API Reference
-
-### Client-side Functions
-
-- `loadPosition(fen)` - Load a position from FEN string
-- `loadExamplePosition()` - Load the example position
-- `resetBoard()` - Reset to starting position
-- `flipBoard()` - Flip board orientation
-- `updateFenDisplay()` - Update the FEN display
-
-### Window Utils (Debug)
-
-Access via `window.boardUtils`:
-- `getCurrentFen()` - Get current position as FEN
-- `getCurrentPosition()` - Get current position object
-- `loadFen(fen)` - Load position from FEN
-- `getBoard()` - Get Chessground board instance
+Contributions are welcome! Please open an issue or pull request with improvements, bug fixes, or new features.
