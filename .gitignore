@@ -210,3 +210,4 @@ game_cache/
 game_analysis/robofresh_blitz_analysis.json
 .gitignore
 game_analysis/robofresh_bullet_analysis.json
+chess_training.db
