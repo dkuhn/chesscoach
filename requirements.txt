@@ -1,0 +1,36 @@
+# ===============================================
+# Chess Training Platform - Complete Dependencies
+# ===============================================
+
+# Chess Analysis Dependencies
+# ---------------------------
+requests>=2.25.0          # HTTP library for Chess.com API calls
+python-chess>=1.999        # Chess library for PGN parsing and engine communication
+python-dotenv>=0.19.0      # Environment variable management
+tqdm>=4.60.0              # Progress bar for analysis scripts
+
+# Backend API Dependencies
+# ------------------------
+fastapi>=0.104.1           # Modern web framework for building APIs
+uvicorn[standard]>=0.24.0  # ASGI server with auto-reload and performance features
+pydantic>=2.5.0            # Data validation using Python type annotations
+python-multipart>=0.0.6    # Multipart form data parser for file uploads
+
+# Development and Testing
+# ----------------------
+pytest>=7.0.0              # Testing framework
+httpx>=0.25.0              # Async HTTP client for testing APIs
+
+# ===============================================
+# Installation Instructions:
+# 
+# 1. Recommended (conda + automatic setup):
+#    ./install.sh
+#
+# 2. Manual with conda:
+#    conda activate chesscoach && pip install -r requirements.txt
+#
+# 3. Backend only:
+#    cd backend && conda activate chesscoach && pip install -r requirements.txt
+#
+# ===============================================

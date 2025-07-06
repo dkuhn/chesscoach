@@ -205,3 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+.DS_Store
+game_cache/
+game_analysis/robofresh_blitz_analysis.json
+.gitignore
+game_analysis/robofresh_bullet_analysis.json
